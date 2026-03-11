@@ -25,7 +25,7 @@ public class AutoFarmSavedData extends SavedData {
     // SavedDataType wires together the id, constructor, codec, and DataFixTypes
     // The simple constructor accepts a Supplier + plain Codec (no Context needed here)
     // DataFixTypes can be null — we have no legacy data to migrate
-    public static final SavedDataType<AutoFarmSavedData> TYPE = new SavedDataType<>(
+    public static final SavedDataType<@org.jetbrains.annotations.NotNull AutoFarmSavedData> TYPE = new SavedDataType<>(
             "autofarmmod_blocks",       // id → saves to <world>/data/autofarmmod_blocks.dat
             AutoFarmSavedData::new,     // Supplier<T> — called when no file exists yet
             CODEC,                      // Codec<T> — used for both save and load

@@ -39,7 +39,7 @@ public class AutoFarmMod {
         InteractionHand hand = event.getHand();
 
         // Only run server-side, only for crop blocks
-        if (world.isClientSide || !(state.getBlock() instanceof CropBlock)) return false;
+        if (world.isClientSide() || !(state.getBlock() instanceof CropBlock)) return false;
 
         if (player.getItemInHand(hand).getItem() == Items.DIAMOND) {
             // Get the SavedData for THIS specific level (dimension-safe)
@@ -89,8 +89,8 @@ public class AutoFarmMod {
     }
 
     public void onWorldTick(TickEvent.LevelTickEvent.Post event) {
-        if (event.level.isClientSide) return;
-        if (!(event.level instanceof ServerLevel serverLevel)) return;
+        if (event.level().isClientSide()) return;
+        if (!(event.level() instanceof ServerLevel serverLevel)) return;
 
         // Load the saved data for this specific level
         AutoFarmSavedData data = AutoFarmSavedData.get(serverLevel);
